@@ -29,8 +29,9 @@ set_token() {
 
   gh_user="$(tmux \
     command-prompt -p "Enter github.com username:" \
-    "set-environment -goq @gh_user %%" \
-    && tmux show-option -gqv @gh_user)"
+    "set-environment -g TMUX_GZP_GH_USER %%" \
+    && tmux show-environment -g TMUX_GZP_GH_USER \
+    | cut -d= -f2)"
 
   gh_token="$(curl \
     --silent \
