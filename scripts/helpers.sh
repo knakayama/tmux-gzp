@@ -27,6 +27,7 @@ set_token() {
   local gh_user gh_token
   local prefix="$(uname -n)"
 
+  # FIXME: set-environment fails at first time
   gh_user="$(tmux \
     command-prompt -p "Enter github.com username:" \
     "set-environment -g TMUX_GZP_GH_USER %%" \
