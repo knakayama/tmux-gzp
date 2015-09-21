@@ -40,12 +40,8 @@ set_token() {
     "https://api.github.com/authorizations" \
     | jq '.token')"
 
-  cat <<EOT >"${HOME}/.config/tmux-gzp.json"
-{
-  "user": "$gh_user",
-  "token": $gh_token
-}
-EOT
+  echo "{\"user\":\"$gh_user\",\"token\":$gh_token}" \
+    | jq --monochrome-output '.' > "${HOME}/.config/tmux-gzp.json"
 }
 
 get_token() {
